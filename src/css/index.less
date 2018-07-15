@@ -1,0 +1,178 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 12px;
+}
+body{
+    background: no-repeat;
+    background-size: 100% 100%;
+    background-position: 100%;
+}
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: rgba(0,0,0,0.2);
+    .song-img{
+        width: 50%;
+        height: 0;
+        padding-bottom: 50%;
+        margin: 0 auto;
+        position: relative;
+        .img-wrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .song-info{
+        height: 126px;
+        width: 100%;
+        line-height: 36px;
+        margin-top: 15px;
+        text-align: center;
+        .song-name{
+            font-size: 24px;     
+            // 设置了line-heignt之后,不设置高度,
+            // 那么高度就是这个值
+            line-height: 36px;
+            color: rgba(255,255,255,0.86);
+            margin-bottom: 8px;
+        }
+        .atu-name,.album{
+            margin-top: 6px;
+            font-size: 12px;
+            line-height: 16px;
+            color: rgba(255,255,255,0.6);
+        }
+    }
+    .pro{
+        display: flex;
+        line-height: 40px;
+        text-align: center;
+        margin-top: 60px;
+        .cur-time,.all-time{
+            width: 60px;
+            height: 40px;
+            color: rgba(255,255,255,0.8);
+        }
+        .pro-wrapper{
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            padding-left: 3px;
+            padding-right: 3px;
+            .pro-bottom,.pro-top{
+                position: absolute;
+                top: 20px;
+                height: 1px;
+                width: 100%; 
+            }
+            .pro-bottom{
+                background-color: rgba(255,255,255,0.2);
+            }
+            .pro-top{
+                background-color: rgba(255,255,255,0.8);
+                transform: translateX(-100%);
+                position: relative;
+                .slider-point{
+                    width: 21px;
+                    height: 21px;
+                    position: absolute;
+                    right: -10px;
+                    top: -10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &::after{
+                        content: '';
+                        display: block;
+                        height: 5px;
+                        width: 5px;
+                        background-color: #fff;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+    .control{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        position: absolute;
+        bottom: 0; 
+        background-color: rgba(255,255,255,0.2);
+        .btn-wrapper{
+            flex: 1;
+            // padding: 25px 25px;
+            // background:no-repeat;
+            // background-size: contain;
+            // background-origin: content-box;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-position: 50%;
+        }
+        .like-btn{
+            background-image: url(../image/icon-like.png);
+            //既有like-btn这个class,又有liking这个class
+            &.liking{background-image: url(../image/icon-like-solid.png);}
+        }
+        .prev-btn{
+            background-image: url(../image/icon-prev.png);
+        }
+        .play-btn{
+            background-image: url(../image/icon-play.png);
+            &.playing{background-image: url(../image/icon-pause.png);}
+        }
+        .next-btn{
+            background-image: url(../image/icon-next.png);
+        }
+        .list-btn{
+            background-image: url(../image/icon-list.png);
+        }
+    }
+    .play-list{
+        position: fixed;
+        bottom: 0px;
+        background-color: #fff;
+        width: 100%;
+        transform: translateY(100%);
+        // animation: transform iteration-count 3s; 
+        .list-header,.list-close{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 16px;
+        }
+        ul{
+            li{
+                padding: 10px;
+                border-top: 1px solid rgba(0,0,0,0.2);
+                font-size: 14px;
+                span{
+                    font-size: 12px;
+                }
+                &.sign{
+                    color: red;
+                }
+            }
+
+        }
+        .list-close{
+            border-top: 1px solid rgba(0,0,0,0.2);
+        }
+        &.show{
+            transform: translateY(0);
+        }
+    }
+}

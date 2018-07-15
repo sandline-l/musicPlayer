@@ -1,0 +1,29 @@
+[
+    {
+        "image": "/source/1.jpg",
+        "audio": "/source/Casablanca.mp3",
+        "song": "卡萨布兰卡",
+        "album": "梦幻星期二",
+        "singer": "Various Artists",
+        "duration": 259,
+        "isLike": true
+    },
+    {
+        "image": "/source/2.jpg",
+        "audio": "/source/直到世界尽头.mp3",
+        "song": "直到世界尽头",
+        "album": "慢摇",
+        "singer": "上杉升",
+        "duration": 329,
+        "isLike": false
+    },
+    {
+        "image": "/source/3.jpg",
+        "audio": "/source/老街.mp3",
+        "song": "老街",
+        "album": "小黄",
+        "singer": "李荣浩",
+        "duration": 318,
+        "isLike": false
+    }
+]
