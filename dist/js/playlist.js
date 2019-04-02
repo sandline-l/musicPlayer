@@ -9,10 +9,8 @@
                     </div>`);
     //渲染播放列表
     function renderlist(songList){
-        console.log(songList);
         var len=songList.length;
         var index=controlmanager.index;
-        console.log(index);
         var str='';
         for(i=0;i<len;i++){
             str+=`<li>${songList[i].song}<span>${songList[i].singer}</span></li>`
@@ -30,7 +28,6 @@
         $body.find('li').on('click',function(){
             //获取当前点击的li的索引
             var index=$(this).index();
-            console.log(index);
             //将该li标记
             signSong(index);
             //让当前播放索引等于被点击li的索引

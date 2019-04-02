@@ -14,15 +14,14 @@ function getData(url){
         url:url,
         // async:false,
         success:function(data){
-            songList=data;
+            songList=data.data;
             //因为root.controlManager(data.length)是一个构造函数,所以可以new
-            controlmanager = new root.controlManager(data.length);
+            controlmanager = new root.controlManager(data.data.length);
             // audiomanager = 
             //注意程序的顺序，先绑定事件之后，才能触发事件
             bindClick();
             bindTouch();
-            console.log(root);
-            root.playlist.renderlist(data);
+            root.playlist.renderlist(data.data);
             $body.trigger('play:change',0);
         },
         error:function(){
@@ -30,7 +29,8 @@ function getData(url){
         }
     })
 }
-getData("../moke/data.json");
+getData("https://easy-mock.com/mock/5b10d0213a1a393db33d41a4/music/getmusicinfo");
+
 // console.log(songList);     undefined
 //说ajax是异步的，所以在外面打印的时候，可能该函数还没执行完，所以出现undefined
 //说可以将它改为同步的，但是一般使用都是用的异步
@@ -80,7 +80,6 @@ function bindClick(){
     //放到一个自定义事件里(play:change)，来简化程序。（也可以放到一个函数里）
     //这个回调函数的第一个参数是event,第二个参数才是自定义的数据
     $body.on('play:change',function(event,index,flag){
-        console.log('123');
         //渲染歌曲信息,图片和是否喜欢
         root.render(songList[index]);
         //渲染当前歌曲的总时间
@@ -94,17 +93,17 @@ function bindClick(){
         }
         root.processor.updata(0);
     })
-    //上一首
+    //上一首按钮
     $body.on('click','.prev-btn',function(){
         var index=controlmanager.prev();      
         $body.trigger('play:change',index);
     })
-    //下一首
+    //下一首按钮
     $body.on('click','.next-btn',function(){
         var index=controlmanager.next();  
         $body.trigger('play:change',index);
     })
-    //播放与暂停
+    //播放与暂停按钮
     $body.on('click','.play-btn',function(){     
         if(audio.status=='pause'){
             audio.play();
@@ -118,6 +117,7 @@ function bindClick(){
         //改变播放按钮的样式
         $(this).toggleClass('playing');
     })
+    //展示播放列表
     $body.on('click','.list-btn',function(){
         root.playlist.show(controlmanager);
     })
